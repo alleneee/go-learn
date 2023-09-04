@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"sync"
 )
 
@@ -26,11 +27,9 @@ func main() {
 		fmt.Printf("索引:%d,值：%d \n", index, value)
 	}
 
-	//切片（slice）是对数组的一个连续片段的引用，所以切片是一个`引用类型`
-	arr := [3]int{1, 3, 2}
-	slice := arr[1:3]
-	fmt.Printf("打印原数组%v\n", arr)  // 打印数组
-	fmt.Printf("打印切片%v\n", slice) // 打印切片
+	for v := range arr {
+		fmt.Printf(strconv.Itoa(v))
+	}
 
 	//并发map
 	//sync.Map 不能使用 make 创建

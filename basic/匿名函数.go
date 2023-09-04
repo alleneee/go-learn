@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+/**
+	func(参数列表)(返回参数列表){
+    	函数体
+	}
+*/
 // 遍历切片的每个元素, 通过给定函数进行元素访问
 
 func visit(list []int, f func(int)) {
@@ -24,6 +29,16 @@ func FGen(x, y int) (func() int, func(int) int) {
 	return sum, avg
 }
 
+func test1(x, y string) (z string) {
+	return x + y
+}
+func test2(fn func() int) int {
+	return fn()
+}
+func fn2() int {
+	return 200
+}
+
 func main() {
 
 	func(data int) {
@@ -35,8 +50,21 @@ func main() {
 	visit([]int{1, 2, 3, 4}, func(v int) {
 		fmt.Println(v)
 	})
-	//传入x=1,y=2 返回时候调用对应的匿名函数 x+y  和 (x+y) *z 的匿名函数
+	//传入x=1,y=2
 	f1, f2 := FGen(1, 2)
-	fmt.Println("第一个匿名函数:", f1())
-	fmt.Println("第二个匿名函数:", f2(3))
+	fmt.Println("第一个匿名函数:", f1())  // x+y的匿名函数
+	fmt.Println("第二个匿名函数:", f2(3)) //  (x+y) *z  的匿名函数
+
+	fmt.Println(test1("h", "x"))
+
+	//匿名函数
+	// 定义一个匿名函数，并将其赋值给变量 add
+	add := func(a, b int) int {
+		return a + b
+	}
+
+	// 调用匿名函数
+	result := add(10, 20)
+	fmt.Println("结果:", result)
+
 }

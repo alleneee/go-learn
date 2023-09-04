@@ -1,12 +1,11 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
-	"strconv"
 )
 
-// 声明类型
+// 全局变量
+// 声明类型  var 名字 类型
 var age int
 
 // 自动推导
@@ -24,71 +23,11 @@ const (
 	pii = 3.1415926
 )
 
-// 指针 &变量：取出变量的地址 *指针= 取出指针对应变量的值
-// 当一个指针被定义后没有分配到任何变量时，它的默认值为 nil
-var ptr = &age1 //取出age1的内存地址
-
-var intPtr *int       // int类型的指针
-var strPtr *string    // string类型的指针
-var floatPtr *float64 // float64类型的指针
-var boolPtr *bool     // bool类型的指针
-
-/*
-*
-字符串中可以使用转义字符来实现换行、缩进等效果，常用的转义字符包括:
- 1. `\n：`换行符
- 2. `\r：`回车符
- 3. `\t：`tab 键
- 4. `\u 或 \U：`Unicode 字符
- 5. \：反斜杠自身
-*/
 var hello string = "hello"
 
 func main() {
+	// 局部变量
 	age = 25
-	// 定义 float32 float64类型
-	floatStr1 := 3.2
-	floatStr2 := 3.22
-
-	/**
-	- `print ：` 结果写到标准输出
-	- `Sprint：`结果会以字符串形式返回
-		%c  单一字符
-		%T  动态类型
-		%v  本来值的输出
-		%+v 字段名+值打印
-		%d  十进制打印数字
-		%p  指针，十六进制
-		%f  浮点数
-		%b 二进制
-		%s string
-	*/
-	fmt.Print(age)
-	fmt.Println() // 换行
-
-	fmt.Printf(strconv.Itoa(age1))
-	fmt.Println() // 换行
-
-	fmt.Printf("调用sum函数求和", strconv.Itoa(sum(1, 2)))
-	fmt.Println() // 换行
-
-	fmt.Printf("打印floast32:%.2f\n", floatStr1)
-	fmt.Println() // 换行
-
-	fmt.Printf("打印floast64:%.2f\n", floatStr2)
-	fmt.Println() // 换行
-
-	fmt.Println(boy)
-	fmt.Println() // 换行
-
-	str1 := "你好,"
-	str2 := "ms的go教程"
-	var stringBuilder bytes.Buffer
-	stringBuilder.WriteString(str1)
-	stringBuilder.WriteString(str2)
-	// Sprint 以字符串形式返回
-	result := fmt.Sprintf(stringBuilder.String())
-	fmt.Println(result)
 
 	//类型转换
 	//只有相同底层类型的变量之间可以进行相互转换（如将 int16 类型转换成 int32 类型）
@@ -113,19 +52,4 @@ func main() {
 
 	fmt.Println("常量:", pi, pii, e)
 
-	fmt.Println("age1指针地址:", ptr)
-	fmt.Println("age1指针地址指向变量的值:", *ptr)
-
-	*ptr = 1111
-	fmt.Println("使用指针修改age1值:", *ptr)
-
-}
-
-// 第一个 int 标识 形参的类型
-// 第二个 int 标识 返回值类型
-func sum(a, b int) int {
-	fmt.Printf("sum() 函数中 a = %d\n", a)
-	fmt.Printf("sum() 函数中 b = %d\n", b)
-	num := a + b
-	return num
 }
