@@ -12,7 +12,7 @@ var x int64
 sync.WaitGroup 是Go语言标准库中的一个同步原语，它用于等待一组 goroutine 完成它们的任务。
 WaitGroup 通常用于确保在主 goroutine 中等待所有其他 goroutines 完成工作，然后再继续执行主 goroutine 的后续操作。
 
-sync.WaitGroup 提供了三个主要方法：
+sync.WaitGroup 提供了三个主要方法::
 
 Add(delta int)：用于增加等待的任务计数器。你可以在主 goroutine 中调用 Add 来设置等待的任务数量。
 
